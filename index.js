@@ -2,6 +2,7 @@ let isLogin = false;
 let destinationId;
 
 function setDestinationId(id){
+    $("#wishlist-date").val("")
     destinationId = id
     return destinationId
 }
@@ -29,7 +30,16 @@ const showRegister = () => {
 const showDashboard = () => {
     $("#login").hide();
     $("#register").hide();
+    $("#cards").empty();
     getDestinationCards()
+    $("#cards").show();
+}
+
+const showWishlist = () => {
+    $("#login").hide();
+    $("#register").hide();
+    $("#cards").empty();
+    getWishlist()
     $("#cards").show();
 }
 
@@ -70,6 +80,42 @@ function getDestinationCards() {
         })
 }
 
+function getWishlist() {
+    $.ajax({
+        method: "GET",
+        url: "http://localhost:3000/wishlist",
+        headers: {
+            token: getToken()
+        }
+    })
+        .done(response => {
+            response.forEach(el => {
+                $("#cards").append(
+                    `
+                    <section class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">${el.Destination.name}</h5>
+                      <p class="card-text">${el.Destination.city}, ${el.Destination.country}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">${el.date}</li>
+                    </ul>
+                    <div class="card-body">
+                      <a href="#" class="card-link">Detail</a>
+                      <a href="#" class="card-link">Selain Detail</a>
+                    </div>
+                  </section>
+                    `
+                )
+            });
+            console.log(response)
+        })
+        .fail(err => {
+            console.log(err)
+        })
+}
+
 $("document").ready(function () {
     // if (getToken()) {
     //     isLogin = true;
@@ -77,13 +123,29 @@ $("document").ready(function () {
     // } else {
     //     showRegister();
     // }
+    showDashboard()
 
     $("#btn-login").on('click',function () {
+        $("#email").val("")
+        $("#password").val("")
         showLogin()
     })
 
     $("#btn-register").on('click',function () {
+        $("#register-name").val("")
+        $("#register-email").val("")
+        $("#register-password").val("")
+        $("#register-phone_number").val("")
+        $("#register-gender").val("")
         showRegister()
+    })
+
+    $("#btn-dashboard").on('click',function () {
+        showDashboard()
+    })
+
+    $("#btn-wishlist").on('click',function () {
+        showWishlist()
     })
 
     $("#login-form").on('submit',function (e) {
@@ -99,6 +161,7 @@ $("document").ready(function () {
             }
         })
             .done(response => {
+                
                 setToken(response.token)
                 console.log(response);
             })
@@ -135,39 +198,7 @@ $("document").ready(function () {
     })
 
     //card wishlist
-    $.ajax({
-        method: "GET",
-        url: "http://localhost:3000/wishlist",
-        headers: {
-            token: getToken()
-        }
-    })
-        .done(response => {
-            response.forEach(el => {
-                $("#cards").append(
-                    `
-                    <section class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">${el.Destination.name}</h5>
-                      <p class="card-text">${el.Destination.city}, ${el.Destination.country}</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">${el.date}</li>
-                    </ul>
-                    <div class="card-body">
-                      <a href="#" class="card-link">Detail</a>
-                      <a href="#" class="card-link">Selain Detail</a>
-                    </div>
-                  </section>
-                    `
-                )
-            });
-            console.log(response)
-        })
-        .fail(err => {
-            console.log(err)
-        })
+    
 
     //card destination
     
