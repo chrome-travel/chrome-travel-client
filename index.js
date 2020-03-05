@@ -73,6 +73,40 @@ $("document").ready(function () {
                 console.log(err)
             })
     })
+
+    $.ajax({
+        method: "GET",
+        url: "http://localhost:3000/wishlist",
+        headers: {
+            token: getToken()
+        }
+    })
+        .done(response => {
+            response.forEach(el => {
+                $("#cards").append(
+                    `
+                    <section class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">${el.Destination.name}</h5>
+                      <p class="card-text">${el.Destination.city}, ${el.Destination.country}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">${el.date}</li>
+                    </ul>
+                    <div class="card-body">
+                      <a href="#" class="card-link">Detail</a>
+                      <a href="#" class="card-link">Selain Detail</a>
+                    </div>
+                  </section>
+                    `
+                )
+            });
+            console.log(response)
+        })
+        .fail(err => {
+            console.log(err)
+        })
 })
 
 function onSignIn(googleUser) {
