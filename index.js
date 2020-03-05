@@ -9,22 +9,70 @@ const setToken = (token) => {
 }
 
 const showLogin = () => {
-    $("login").show();
-    $("register").hide();
+    $("#login").show();
+    $("#register").hide();
 }
 
 const showRegister = () => {
-    $("login").hide();
-    $("register").show();
+    $("#login").hide();
+    $("#register").show();
 }
 
-$(document).ready(function () {
-    if (getToken()) {
-        isLogin = true;
-        showLogin();
-    } else {
-        showRegister();
-    }
+$("document").ready(function () {
+    // if (getToken()) {
+    //     isLogin = true;
+    //     showLogin();
+    // } else {
+    //     showRegister();
+    // }
+
+    $("#login-form").on('submit',function (e) {
+        e.preventDefault()
+        const email = $("#email").val()
+        const password = $("#password").val()
+        $.ajax({
+            method: "POST",
+            url: "http://localhost:3000/login",
+            data: {
+                email,
+                password
+            }
+        })
+            .done(response => {
+                setToken(response.token)
+                console.log(response);
+            })
+            .fail(err => {
+                console.log(err)
+            })
+    })
+
+    $("#register-form").on('submit',function (e) {
+        e.preventDefault()
+        const name = $("#register-name").val()
+        const email = $("#register-email").val()
+        const password = $("#register-password").val()
+        const phone_number= $("#register-phone_number").val()
+        const gender = $("#register-gender").val()
+        console.log(name, email, password, phone_number, gender)
+        $.ajax({
+            method: "POST",
+            url: "http://localhost:3000/users",
+            data: {
+                name,
+                email,
+                password,
+                phone_number,
+                gender
+            }
+        })
+            .done(response => {
+                console.log(response)
+            })
+            .fail(err => {
+                console.log(err)
+            })
+    })
 })
 
 function onSignIn(googleUser) {
