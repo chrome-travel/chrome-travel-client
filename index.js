@@ -19,12 +19,12 @@ const showRegister = () => {
 }
 
 $("document").ready(function () {
-    // if (getToken()) {
-    //     isLogin = true;
-    //     showLogin();
-    // } else {
-    //     showRegister();
-    // }
+    if (getToken()) {
+        isLogin = true;
+        showLogin();
+    } else {
+        showRegister();
+    }
 
     $("#login-form").on('submit',function (e) {
         e.preventDefault()
