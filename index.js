@@ -2,6 +2,7 @@ let isLogin = false;
 let destinationId;
 
 function setDestinationId(id){
+    $("#wishlist-date").val("")
     destinationId = id
     return destinationId
 }
@@ -122,12 +123,20 @@ $("document").ready(function () {
     // } else {
     //     showRegister();
     // }
+    showDashboard()
 
     $("#btn-login").on('click',function () {
+        $("#email").val("")
+        $("#password").val("")
         showLogin()
     })
 
     $("#btn-register").on('click',function () {
+        $("#register-name").val("")
+        $("#register-email").val("")
+        $("#register-password").val("")
+        $("#register-phone_number").val("")
+        $("#register-gender").val("")
         showRegister()
     })
 
@@ -152,6 +161,7 @@ $("document").ready(function () {
             }
         })
             .done(response => {
+                
                 setToken(response.token)
                 console.log(response);
             })
