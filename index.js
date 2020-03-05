@@ -251,3 +251,33 @@ function signOut() {
             console.log('User signed out.');
         });
 }
+
+function youtubeVideo(event, query) {
+    event.preventDefault()
+    $("#destination-videos").empty()
+    console.log(query);
+
+    $.ajax({
+        method: "POST",
+        url: "http://localhost:3000/youtubeSearch",
+        data: {
+            query
+        }
+    })
+        .done(result => {
+            result.forEach(element => {
+                console.log(element.videoId);
+
+                $("#destination-videos").append(
+                    `
+                    <iframe width="320" height="180" src="https://www.youtube.com/embed/${element.videoId}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    `
+                )
+
+            });
+        })
+
+        .fail(err => {
+            console.log(err);
+        })
+}
