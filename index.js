@@ -1,4 +1,10 @@
 let isLogin = false;
+let destinationId;
+
+function setDestinationId(id){
+    destinationId = id
+    return destinationId
+}
 
 const getToken = () => {
     return localStorage.getItem('token');
@@ -11,20 +17,74 @@ const setToken = (token) => {
 const showLogin = () => {
     $("#login").show();
     $("#register").hide();
+    $("#cards").hide();
 }
 
 const showRegister = () => {
     $("#login").hide();
     $("#register").show();
+    $("#cards").hide();
+}
+
+const showDashboard = () => {
+    $("#login").hide();
+    $("#register").hide();
+    getDestinationCards()
+    $("#cards").show();
+}
+
+function getDestinationCards() {
+    $.ajax({
+        method: "GET",
+        url: "http://localhost:3000/destinations",
+        headers: {
+            token: getToken()
+        }
+    })
+        .done(response => {
+            response.forEach(el => {
+                $("#cards").append(
+                    `
+                    <section class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">${el.name}</h5>
+                      <p class="card-text">${el.city}, ${el.country}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"></li>
+                    </ul>
+                    <div class="card-body">
+                    <button type="button" onclick="setDestinationId(${el.id})" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                    Detail
+                    </button>
+                    </div>
+                  </section>
+                    `
+                )
+            });
+            console.log(response)
+        })
+        .fail(err => {
+            console.log(err)
+        })
 }
 
 $("document").ready(function () {
-    if (getToken()) {
-        isLogin = true;
-        showLogin();
-    } else {
-        showRegister();
-    }
+    // if (getToken()) {
+    //     isLogin = true;
+    //     showLogin();
+    // } else {
+    //     showRegister();
+    // }
+
+    $("#btn-login").on('click',function () {
+        showLogin()
+    })
+
+    $("#btn-register").on('click',function () {
+        showRegister()
+    })
 
     $("#login-form").on('submit',function (e) {
         e.preventDefault()
@@ -74,6 +134,7 @@ $("document").ready(function () {
             })
     })
 
+    //card wishlist
     $.ajax({
         method: "GET",
         url: "http://localhost:3000/wishlist",
@@ -107,6 +168,35 @@ $("document").ready(function () {
         .fail(err => {
             console.log(err)
         })
+
+    //card destination
+    
+    
+
+    //add wishlist
+    $("#add-wishlist").on('submit',function (e) {
+        e.preventDefault()
+        const token = getToken()
+        const date = $("#wishlist-date").val()
+        const DestinationId = destinationId
+        $.ajax({
+            method: "POST",
+            url: "http://localhost:3000/wishlist",
+            headers: {
+                token
+            },
+            data: {
+                date,
+                DestinationId
+            }
+        })
+            .done(response => {
+                console.log(response)
+            })
+            .fail(err => {
+                console.log(err)
+            })
+    })
 })
 
 function onSignIn(googleUser) {
