@@ -56,14 +56,14 @@ function getDestinationCards() {
             response.forEach(el => {
                 $("#cards").append(
                     `
-                    <h1>memek</h1>
                     <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                         <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+                            <img src="assets/img/portfolio/portfolio-${el.id}.jpg" class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>${el.name}</h4>
                                 <p>${el.city},  ${el.country}</p>
                                 <div class="portfolio-links">
+                                <button type="button" onclick="setDestinationId(${el.id})" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                                 <a href="assets/img/portfolio/portfolio-1.jpg" onclick="setDestinationId(${el.id})" data-gall="portfolioGallery" class="venobox" title="Kuta"><i class="icofont-eye"></i></a>
                                 </div>
                             </div>
