@@ -41,9 +41,8 @@
     <div class="container">
 
       <div class="logo float-left">
-        <h1 class="text-light"><a href="index.html"><span>Chrome Travel</span></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <h1 class="text-light"><a href=#><span>Chrome Travel</span></a></h1>
+        <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
       </div>
 
       <nav class="nav-menu float-right d-none d-lg-block">
@@ -52,6 +51,7 @@
           <li class="active"><a href="#header">Home</a></li>
           <li><a href="#wishlist">Wishlist</a></li>
           <li><a id="btn-dashboard" href="#destination">Destination</a></li>
+          <li id="authentication-action"></li>
           <li><a href="#login">Login</a></li>
           
         </ul>
@@ -117,7 +117,7 @@
   <main id="main">
 
     <!-- ======= Our Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio section-bg">
+    <section id="destination" class="portfolio section-bg">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="section-title">
@@ -162,15 +162,10 @@
             </div>
           </div>
     </section>
-  </main> 
-  <!-- End #main -->
 
-<!-- 
-
-  <div class="container">
     <section id="login">
-        <h1 id="title-login">Login</h1>
-        <form id="login-form">
+        <h1 align="center" id="title-login">LOGIN</h1>
+        <form id="login-form" align="center">
             <div class="form-group">
                 <label for="email">Email address</label>
                 <input type="email" class="form-control" id="email" placeholder="Enter email">
@@ -182,12 +177,15 @@
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
         <br>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div> <a href="#" onclick="signOut();">Sign out</a>
+        <p align="center">OR</p>
+        <div align="center" class="g-signin2" data-onsuccess="onSignIn"></div>
+        <br><br>
+        <p align="center">Don't have account? <a id="register-account" href="#register-form">Register Here!</a></p>
     </section>
-
-    <section id="register">
-        <h1 id="title-register">Register</h1>
-        <form id="register-form">
+  
+    <section id="register-form" align="center">
+        <h1 id="title-register">REGISTER</h1>
+        <form id="register">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="name" class="form-control" id="register-name" placeholder="Password">
@@ -212,33 +210,10 @@
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
-    </section>
+    </section>  
 
-    <section class="logged-in" id="wishlist">
-        <button onclick="youtubeVideo(event, 'wisata kuta indonesia')">Kuta</button>
-        <div id="destination-videos">
-
-        </div>
-    </section>
-
-    <section class="logged-in" id="addDestination">
-
-    </section>
-     
-    <section id="cards">
-        
-    </section>
-
-    
-    
-</div> --> -->
-
-
-
-
-
-
-
+  </main> 
+  <!-- End #main -->
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
