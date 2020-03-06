@@ -76,22 +76,14 @@ function getWishlist() {
     })
         .done(response => {
             response.forEach(el => {
-                $("#cards").append(
+                $("#tbody-wishlist").append(
                     `
-                    <section class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">${el.Destination.name}</h5>
-                      <p class="card-text">${el.Destination.city}, ${el.Destination.country}</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">${el.date}</li>
-                    </ul>
-                    <div class="card-body">
-                      <a href="#" class="card-link">Detail</a>
-                      <a href="#" class="card-link">Selain Detail</a>
-                    </div>
-                  </section>
+                    <tr>
+                        <td>${el.Destination.name}</td>
+                        <td>${el.Destination.city}, ${el.Destination.country}</td>
+                        <td>${el.date}</td>
+                        <td>action</td>
+                    </tr>
                     `
                 )
             });
