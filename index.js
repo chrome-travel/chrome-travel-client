@@ -24,14 +24,6 @@ const showRegister = () => {
     $("#register").show();
 }
 
-// const showDashboard = () => {
-//     $("#login").hide();
-//     $("#register").hide();
-//     $("#cards").empty();
-//     getDestinationCards()
-//     $("#cards").show();
-// }
-
 const showWishlist = () => {
     $("#login").hide();
     $("#register").hide();
@@ -136,6 +128,8 @@ function loginaje(event) {
 
 $(document).ready(function () {
     $("#authentication-action").empty()
+    getDestinationCards()
+    $("#cards").show();
     
     let token = getToken()
     if (token) {
@@ -147,7 +141,10 @@ $(document).ready(function () {
         $("#register").show()
         $("#authentication-action").append(`<li><a href="#login">Login</a></li>`)
     }
-    showDashboard()
+
+    // getDestinationCards()
+    // $("#cards").show();
+    
 
     $("#btn-login").on('click',function () {
         $("#email").val("")
@@ -163,7 +160,27 @@ $(document).ready(function () {
         showWishlist()
     })
 
-    
+    $("#login-form").on('submit',function (e) {
+        e.preventDefault()
+        const email = $("#email").val()
+        const password = $("#password").val()
+        console.log(email,password)
+        $.ajax({
+            method: "POST",
+            url: "http://localhost:3000/login",
+            data: {
+                email,
+                password
+            }
+        })
+            .done(response => {
+                setToken(response.token)
+                console.log(response);
+            })
+            .fail(err => {
+                console.log(err)
+            })
+    })
 
     $("#register-form").on('submit',function (e) {
         e.preventDefault()
