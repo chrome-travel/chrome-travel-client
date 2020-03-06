@@ -51,7 +51,8 @@ function getDestinationCards() {
                                 <h4>${el.name}</h4>
                                 <p>${el.city},  ${el.country}</p>
                                 <div class="portfolio-links">
-                                <a id="displayModal" onclick="setDestinationId(${el.id})" data-toggle="modal" data-target="#exampleModalCenter" data-gall="portfolioGallery" class="venobox"><i class="icofont-eye"></i></a>
+                                <button onclick="setDestinationId(${el.id})" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="icofont-eye"></i></button>
+
                                 </div>
                             </div>
                         </div>
@@ -217,8 +218,11 @@ $(document).ready(function () {
     
 
     //add wishlist
-    $("#add-wishlist").on('submit',function (e) {
-        e.preventDefault()
+    
+})
+
+function addWishlist(event) {
+        event.preventDefault()
         const token = getToken()
         const date = $("#wishlist-date").val()
         const DestinationId = destinationId
@@ -234,14 +238,13 @@ $(document).ready(function () {
             }
         })
             .done(response => {
-                $('#exampleModalCenter').modal('toggle')
+                $('#exampleModal').modal('hide')
                 console.log(response)
             })
             .fail(err => {
                 console.log(err)
             })
-    })
-})
+}
 
 function onSignIn(googleUser) {
     const profile = googleUser.getBasicProfile();
