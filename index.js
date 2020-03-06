@@ -66,6 +66,22 @@ function getDestinationCards() {
         })
 }
 
+function deletewl(id) {
+    $.ajax({
+        method: "DELETE",
+        url: `http://localhost:3000/wishlist/${id}`,
+        headers: {
+            token: getToken()
+        }
+    })
+    .done(response => {
+            getWishlist();
+        })
+        .fail(err => {
+            console.log(err)
+        })
+}
+
 function getWishlist() {
     $.ajax({
         method: "GET",
@@ -75,23 +91,16 @@ function getWishlist() {
         }
     })
         .done(response => {
+            $("#tbody-wishlist").empty();
             response.forEach(el => {
-                $("#cards").append(
+                $("#tbody-wishlist").append(
                     `
-                    <section class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">${el.Destination.name}</h5>
-                      <p class="card-text">${el.Destination.city}, ${el.Destination.country}</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">${el.date}</li>
-                    </ul>
-                    <div class="card-body">
-                      <a href="#" class="card-link">Detail</a>
-                      <a href="#" class="card-link">Selain Detail</a>
-                    </div>
-                  </section>
+                    <tr>
+                        <td>${el.Destination.name}</td>
+                        <td>${el.Destination.city}, ${el.Destination.country}</td>
+                        <td>${el.date}</td>
+                        <td><button onclick="deletewl(${el.id})" type="button" class="btn btn-danger">Delete</button></td>
+                    </tr>
                     `
                 )
             });
@@ -212,7 +221,7 @@ $(document).ready(function () {
     })
 
     //card wishlist
-    
+    getWishlist();
 
     //card destination
     
@@ -227,6 +236,8 @@ function addWishlist(event) {
         const token = getToken()
         const date = $("#wishlist-date").val()
         const DestinationId = destinationId
+        console.log(date, DestinationId);
+        console.log("anak babi!!!!!!!!!!!!!!!!!!!!!!!!!!");
         $.ajax({
             method: "POST",
             url: "http://localhost:3000/wishlist",
@@ -240,7 +251,8 @@ function addWishlist(event) {
         })
             .done(response => {
                 $('#exampleModal').modal('hide')
-                console.log(response)
+                // $("#tbody-wishlist").empty()
+                getWishlist()
             })
             .fail(err => {
                 console.log(err)
