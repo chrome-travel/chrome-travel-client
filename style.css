@@ -1,0 +1,15 @@
+#cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.card{
+    margin: 20px;
+}
+
+.landing-image{
+    width: 600px;
+    height: 400px;
+}

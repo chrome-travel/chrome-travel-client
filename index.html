@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="google-signin-client_id" content="144675057444-hebbpl6e4ttug0bj2cqvi0n981fov9pr.apps.googleusercontent.com">
+
+  <title>Chrome Travel</title>
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- =======================================================
+  * Template Name: Mamba - v2.0.1
+  * Template URL: https://bootstrapmade.com/mamba-one-page-bootstrap-template-free/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container">
+
+      <div class="logo float-left">
+        <h1 class="text-light"><a href=#><span>Chrome Travel</span></a></h1>
+        <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
+      </div>
+
+      <nav class="nav-menu float-right d-none d-lg-block">
+        <ul>
+          
+          <li class="active"><a href="#header">Home</a></li>
+          <li><a href="#wishlist">Wishlist</a></li>
+          <li><a id="btn-dashboard" href="#destination">Destination</a></li>          
+          <li  id="authentication-action" >
+          </li>
+          
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+
+        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <!-- Slide 1 -->
+          <div class="carousel-item active" style="background-image: url('assets/img/slide/slide-1.jpg');">
+            <div class="carousel-container">
+              <div class="carousel-content container">
+                <h2 class="animated fadeInDown">Welcome to <span>Chrome Travel</span></h2>
+                <p class="animated fadeInUp"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item" style="background-image: url('assets/img/slide/slide-2.jpg');">
+            <div class="carousel-container">
+              <div class="carousel-content container">
+                <h2 class="animated fadeInDown">Find your dreams destination</h2>
+                <p class="animated fadeInUp"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="carousel-item" style="background-image: url('assets/img/slide/slide-3.jpg');">
+            <div class="carousel-container">
+              <div class="carousel-content container">
+                <h2 class="animated fadeInDown"></h2>
+                <p class="animated fadeInUp"></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon icofont-rounded-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon icofont-rounded-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Our Portfolio Section ======= -->
+    <section id="destination" class="portfolio section-bg">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="section-title">
+          <h2>Our Destination</h2>
+          <p></p>
+        </div>
+
+        <div class="row portfolio-container">
+            <section id="cards">
+        
+            </section>
+        </div>
+
+      </div>
+
+    </section><!-- End Our Portfolio Section -->
+
+    <!-- <section id="modal"> -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Destination's Detail</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                <div id="container-list">
+                    <div id="zomatos">
+                      <ul id="list-zomatos">
+
+                      </ul>
+                    </div>
+                    <div id="hotels">
+                      <ul id="list-hotels">
+
+                      </ul>
+                    </div>
+                    <div id="youtube">
+                      <ul id="list-youtube">
+
+                      </ul>
+                    </div>
+                </div>
+                  <form onsubmit="addWishlist(event)" id="add-wishlist">
+                  <div class="form-group">
+                      <label for="date">Visit Date</label>
+                      <input type="date" class="form-control" id="wishlist-date" placeholder="Password">
+                  </div>
+                  <button type="submit" id="submitModal" class="btn btn-primary">Visit</button>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+              </div>
+            </div>
+          </div>
+    <!-- </section> -->
+  </main> 
+  <!-- End #main -->
+
+    <section id="login">
+        <h1 align="center" id="title-login">LOGIN</h1>
+        <form id="login-form" align="center" onsubmit="loginaje(event)" >
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <br>
+        <p align="center">OR</p>
+        <div align="center" class="g-signin2" data-onsuccess="onSignIn"></div>
+        <br><br>
+        <p align="center">Don't have account? <a id="register-account" href="#register-form">Register Here!</a></p>
+    </section>
+  
+    <section id="register" align="center">
+        <h1 id="title-register">REGISTER</h1>
+        <form id="register-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="name" class="form-control" id="register-name" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" class="form-control" id="register-email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="register-password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label for="phone_number">Phone Number</label>
+                <input type="phone_number" class="form-control" id="register-phone_number" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <select name="gender" id="register-gender">
+                <option value="true">Male</option>
+                <option value="false">Female</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </section>  
+
+    <section id="wishlist" align="center">
+      <h1 id="title-wishlist">My Wishlist</h1>
+      <table class="table table-striped" id="table-wishlist">
+        <thead>
+          <tr>
+            <th scope="col">Destination</th>
+            <th scope="col">City</th>
+            <th scope="col">Date</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-wishlist">
+          
+        </tbody>
+      </table>
+    </section>  
+
+  </main> 
+  <!-- End #main -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/counterup/counterup.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="index.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
