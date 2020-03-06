@@ -114,15 +114,17 @@ function getWishlist() {
 }
 
 $(document).ready(function () {
-    console.log('masuk document ready');
+    $("#authentication-action").empty()
     
     let token = getToken()
     if (token) {
         $("#login").hide()
         $("#register-form").hide()
+        $("#authentication-action").append(`<li><a style="cursor: pointer" onclick="logout()">Logout</a></li>`)
     } else {
         $("#login").show()
         $("#register-form").show()
+        $("#authentication-action").append(`<li><a href="#login">Login</a></li>`)
     }
     showDashboard()
 
@@ -283,3 +285,16 @@ function youtubeVideo(event, query) {
         })
 }
 
+
+function logout() {
+
+    localStorage.removeItem('token');
+
+    let auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        console.log('User signed out.');
+    });
+
+
+
+}

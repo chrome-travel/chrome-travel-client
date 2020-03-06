@@ -50,9 +50,9 @@
           
           <li class="active"><a href="#header">Home</a></li>
           <li><a href="#wishlist">Wishlist</a></li>
-          <li><a id="btn-dashboard" href="#destination">Destination</a></li>
-          <li id="authentication-action"></li>
-          <li><a href="#login">Login</a></li>
+          <li><a id="btn-dashboard" href="#destination">Destination</a></li>          
+          <li  id="authentication-action" >
+          </li>
           
         </ul>
       </nav><!-- .nav-menu -->
@@ -202,10 +202,11 @@
                 <input type="phone_number" class="form-control" id="register-phone_number" placeholder="Password">
             </div>
             <div class="form-group">
-                <select name="gender" id="register-gender">
-                    <option value="true">Male</option>
-                    <option value="false">Female</option>
-                </select>
+              <label for="gender">Gender</label>
+              <select name="gender" id="register-gender">
+                <option value="true">Male</option>
+                <option value="false">Female</option>
+              </select>
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
