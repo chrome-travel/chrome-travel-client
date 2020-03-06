@@ -51,7 +51,7 @@
           
           <li class="active"><a href="#header">Home</a></li>
           <li><a href="#wishlist">Wishlist</a></li>
-          <li><a id="btn-dashboard" href="#destination">Destination</a></li>
+          <li><a href="#destination">Destination</a></li>
           <li><a href="#login">Login</a></li>
           
         </ul>
@@ -117,7 +117,7 @@
   <main id="main">
 
     <!-- ======= Our Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio section-bg">
+    <section id="destination" class="portfolio section-bg">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="section-title">
@@ -125,43 +125,40 @@
           <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
 
-        <section id="cards">
-    
-        </section>
         <div class="row portfolio-container">
+            <section id="cards">
+        
+            </section>
         </div>
 
       </div>
 
     </section><!-- End Our Portfolio Section -->
 
-    <section id="modal">
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <form id="add-wishlist">
-                    <div class="form-group">
-                        <label for="date">Phone Number</label>
-                        <input type="date" class="form-control" id="wishlist-date" placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Visit</button>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button> -->
-                </div>
-              </div>
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-          </div>
-    </section>
+            <div class="modal-body">
+                <form id="add-wishlist">
+                <div class="form-group">
+                    <label for="date">Visit Date</label>
+                    <input type="date" class="form-control" id="wishlist-date" placeholder="Password">
+                </div>
+                <button type="submit" id="submitModal" class="btn btn-primary">Visit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+        </div>
   </main> 
   <!-- End #main -->
 
