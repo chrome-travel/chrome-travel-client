@@ -1,4 +1,3 @@
-let isLogin = false;
 let destinationId;
 
 function setDestinationId(id){
@@ -22,18 +21,16 @@ const showLogin = () => {
 }
 
 const showRegister = () => {
-    $("#login").hide();
-    $("#register").show();
-    $("#cards").hide();
+    $("#register-form").show();
 }
 
-const showDashboard = () => {
-    $("#login").hide();
-    $("#register").hide();
-    $("#cards").empty();
-    getDestinationCards()
-    $("#cards").show();
-}
+// const showDashboard = () => {
+//     $("#login").hide();
+//     $("#register").hide();
+//     $("#cards").empty();
+//     getDestinationCards()
+//     $("#cards").show();
+// }
 
 const showWishlist = () => {
     $("#login").hide();
@@ -116,28 +113,25 @@ function getWishlist() {
         })
 }
 
-$("document").ready(function () {
-    // if (getToken()) {
-    //     isLogin = true;
-    //     showLogin();
-    // } else {
-    //     showRegister();
-    // }
+$(document).ready(function () {
+    $("#authentication-action").empty()
+    
+    let token = getToken()
+    if (token) {
+        $("#login").hide()
+        $("#register-form").hide()
+        $("#authentication-action").append(`<li><a style="cursor: pointer" onclick="logout()">Logout</a></li>`)
+    } else {
+        $("#login").show()
+        $("#register-form").show()
+        $("#authentication-action").append(`<li><a href="#login">Login</a></li>`)
+    }
     showDashboard()
 
     $("#btn-login").on('click',function () {
         $("#email").val("")
         $("#password").val("")
         showLogin()
-    })
-
-    $("#btn-register").on('click',function () {
-        $("#register-name").val("")
-        $("#register-email").val("")
-        $("#register-password").val("")
-        $("#register-phone_number").val("")
-        $("#register-gender").val("")
-        showRegister()
     })
 
     $("#btn-dashboard").on('click',function () {
@@ -247,7 +241,6 @@ function onSignIn(googleUser) {
     })
         .done((result) => {
             setToken(result.token);
-            showRegister();
         })
         .fail((err) => {
             console.log(err);
@@ -290,4 +283,18 @@ function youtubeVideo(event, query) {
         .fail(err => {
             console.log(err);
         })
+}
+
+
+function logout() {
+
+    localStorage.removeItem('token');
+
+    let auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        console.log('User signed out.');
+    });
+
+
+
 }
