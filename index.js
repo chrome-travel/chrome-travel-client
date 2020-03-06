@@ -123,7 +123,10 @@ $(document).ready(function () {
         $("#register-form").show()
         $("#authentication-action").append(`<li><a href="#login">Login</a></li>`)
     }
-    showDashboard()
+
+    // getDestinationCards()
+    // $("#cards").show();
+    
 
     $("#btn-login").on('click',function () {
         $("#email").val("")
@@ -143,6 +146,7 @@ $(document).ready(function () {
         e.preventDefault()
         const email = $("#email").val()
         const password = $("#password").val()
+        console.log(email,password)
         $.ajax({
             method: "POST",
             url: "http://localhost:3000/login",
@@ -152,7 +156,6 @@ $(document).ready(function () {
             }
         })
             .done(response => {
-                
                 setToken(response.token)
                 console.log(response);
             })
