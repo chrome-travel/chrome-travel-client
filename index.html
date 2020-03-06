@@ -49,7 +49,7 @@
           
           <li class="active"><a href="#header">Home</a></li>
           <li><a href="#services">Wishlist</a></li>
-          <li><a href="#portfolio">Destination</a></li>
+          <li><a id="btn-dashboard" href="#portfolio">Destination</a></li>
           <li><a href="#team">Login</a></li>
           
         </ul>
@@ -123,86 +123,10 @@
           <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
 
+        <section id="cards">
+    
+        </section>
         <div class="row portfolio-container">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Kuta</h4>
-                <p>Bali, Indonesia</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-1.jpg" data-gall="portfolioGallery" class="venobox" title="Kuta"><i class="icofont-eye"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Farmhouse</h4>
-                <p>Bandung, Indonesia</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-2.jpg" data-gall="portfolioGallery" class="venobox" title="Farmhouse"><i class="icofont-eye"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Legian</h4>
-                <p>Bali, Indonesia</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-3.jpg" data-gall="portfolioGallery" class="venobox" title=Legian><i class="icofont-eye"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Taman Safari</h4>
-                <p>Bogor, Indonesia</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-4.jpg" data-gall="portfolioGallery" class="venobox" title="Taman Safari"><i class="icofont-eye"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Pantai Losari</h4>
-                <p>Makassar, Indonesia</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-5.jpg" data-gall="portfolioGallery" class="venobox" title="Pantai Losari"><i class="icofont-eye"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Ancol</h4>
-                <p>Jakarta, Indonesia</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-6.jpg" data-gall="portfolioGallery" class="venobox" title="Ancol"><i class="icofont-eye"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
 
       </div>
@@ -210,6 +134,107 @@
     </section><!-- End Our Portfolio Section -->
 
   </main><!-- End #main -->
+
+<!-- 
+
+  <div class="container">
+    <section id="login">
+        <h1 id="title-login">Login</h1>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <br>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div> <a href="#" onclick="signOut();">Sign out</a>
+    </section>
+
+    <section id="register">
+        <h1 id="title-register">Register</h1>
+        <form id="register-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="name" class="form-control" id="register-name" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" class="form-control" id="register-email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="register-password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label for="phone_number">Phone Number</label>
+                <input type="phone_number" class="form-control" id="register-phone_number" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <select name="gender" id="register-gender">
+                    <option value="true">Male</option>
+                    <option value="false">Female</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </section>
+
+    <section class="logged-in" id="wishlist">
+        <button onclick="youtubeVideo(event, 'wisata kuta indonesia')">Kuta</button>
+        <div id="destination-videos">
+
+        </div>
+    </section>
+
+    <section class="logged-in" id="addDestination">
+
+    </section>
+     
+    <section id="cards">
+        
+    </section>
+
+    <section id="modal">
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form id="add-wishlist">
+                    <div class="form-group">
+                        <label for="date">Phone Number</label>
+                        <input type="date" class="form-control" id="wishlist-date" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Visit</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                <!-- </div>
+              </div>
+            </div>
+          </div>
+    </section>
+    
+</div> --> -->
+
+
+
+
+
+
+
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 

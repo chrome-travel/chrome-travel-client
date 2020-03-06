@@ -28,8 +28,8 @@ const showRegister = () => {
 }
 
 const showDashboard = () => {
-    $("#login").hide();
-    $("#register").hide();
+    // $("#login").hide();
+    // $("#register").hide();
     $("#cards").empty();
     getDestinationCards()
     $("#cards").show();
@@ -52,24 +52,23 @@ function getDestinationCards() {
         }
     })
         .done(response => {
+            console.log(response)
             response.forEach(el => {
                 $("#cards").append(
                     `
-                    <section class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">${el.name}</h5>
-                      <p class="card-text">${el.city}, ${el.country}</p>
+                    <h1>memek</h1>
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>${el.name}</h4>
+                                <p>${el.city},  ${el.country}</p>
+                                <div class="portfolio-links">
+                                <a href="assets/img/portfolio/portfolio-1.jpg" onclick="setDestinationId(${el.id})" data-gall="portfolioGallery" class="venobox" title="Kuta"><i class="icofont-eye"></i></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item"></li>
-                    </ul>
-                    <div class="card-body">
-                    <button type="button" onclick="setDestinationId(${el.id})" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                    Detail
-                    </button>
-                    </div>
-                  </section>
                     `
                 )
             });
@@ -79,7 +78,7 @@ function getDestinationCards() {
             console.log(err)
         })
 }
-
+// 
 function getWishlist() {
     $.ajax({
         method: "GET",
@@ -96,7 +95,7 @@ function getWishlist() {
                     <img class="card-img-top" src="..." alt="Card image cap">
                     <div class="card-body">
                       <h5 class="card-title">${el.Destination.name}</h5>
-                      <p class="card-text">${el.Destination.city}, ${el.Destination.country}</p>
+                      <p class="card-text">>${el.Destination.city},  ${el.Destination.country}</p>
                     </div>
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item">${el.date}</li>
@@ -106,6 +105,8 @@ function getWishlist() {
                       <a href="#" class="card-link">Selain Detail</a>
                     </div>
                   </section>
+
+                  
                     `
                 )
             });
@@ -116,6 +117,7 @@ function getWishlist() {
         })
 }
 
+// getDestinationCards()
 $("document").ready(function () {
     // if (getToken()) {
     //     isLogin = true;
@@ -123,7 +125,11 @@ $("document").ready(function () {
     // } else {
     //     showRegister();
     // }
-    showDashboard()
+    // showDashboard()
+
+    
+
+
 
     $("#btn-login").on('click',function () {
         $("#email").val("")
