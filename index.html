@@ -135,30 +135,32 @@
 
     </section><!-- End Our Portfolio Section -->
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
+    <!-- <section id="modal"> -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <form onsubmit="addWishlist(event)" id="add-wishlist">
+                  <div class="form-group">
+                      <label for="date">Visit Date</label>
+                      <input type="date" class="form-control" id="wishlist-date" placeholder="Password">
+                  </div>
+                  <button type="submit" id="submitModal" class="btn btn-primary">Visit</button>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+              </div>
             </div>
-            <div class="modal-body">
-                <form id="add-wishlist">
-                <div class="form-group">
-                    <label for="date">Visit Date</label>
-                    <input type="date" class="form-control" id="wishlist-date" placeholder="Password">
-                </div>
-                <button type="submit" id="submitModal" class="btn btn-primary">Visit</button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-            </div>
-        </div>
-        </div>
+          </div>
+    <!-- </section> -->
   </main> 
   <!-- End #main -->
 
