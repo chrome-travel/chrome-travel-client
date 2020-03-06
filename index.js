@@ -21,7 +21,7 @@ const showLogin = () => {
 }
 
 const showRegister = () => {
-    $("#register-form").show();
+    $("#register").show();
 }
 
 // const showDashboard = () => {
@@ -110,17 +110,41 @@ function getWishlist() {
         })
 }
 
+function loginaje(event) {
+    event.preventDefault();
+    $("#login-form").on('submit',function (e) {
+        e.preventDefault()
+        const email = $("#email").val()
+        const password = $("#password").val()
+        $.ajax({
+            method: "POST",
+            url: "http://localhost:3000/login",
+            data: {
+                email,
+                password
+            }
+        })
+            .done(response => {
+                setToken(response.token)
+                console.log(response);
+            })
+            .fail(err => {
+                console.log(err)
+            })
+    })
+}
+
 $(document).ready(function () {
     $("#authentication-action").empty()
     
     let token = getToken()
     if (token) {
         $("#login").hide()
-        $("#register-form").hide()
+        $("#register").hide()
         $("#authentication-action").append(`<li><a style="cursor: pointer" onclick="logout()">Logout</a></li>`)
     } else {
         $("#login").show()
-        $("#register-form").show()
+        $("#register").show()
         $("#authentication-action").append(`<li><a href="#login">Login</a></li>`)
     }
     showDashboard()
@@ -139,27 +163,7 @@ $(document).ready(function () {
         showWishlist()
     })
 
-    $("#login-form").on('submit',function (e) {
-        e.preventDefault()
-        const email = $("#email").val()
-        const password = $("#password").val()
-        $.ajax({
-            method: "POST",
-            url: "http://localhost:3000/login",
-            data: {
-                email,
-                password
-            }
-        })
-            .done(response => {
-                
-                setToken(response.token)
-                console.log(response);
-            })
-            .fail(err => {
-                console.log(err)
-            })
-    })
+    
 
     $("#register-form").on('submit',function (e) {
         e.preventDefault()
@@ -292,6 +296,7 @@ function logout() {
         console.log('User signed out.');
     });
 
-
+    $("#register").show()
+    $("#login").show()
 
 }
