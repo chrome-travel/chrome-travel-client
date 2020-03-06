@@ -59,7 +59,6 @@ function getDestinationCards() {
                     `
                 )
             });
-            console.log(response)
         })
         .fail(err => {
             console.log(err)
@@ -95,7 +94,6 @@ function getWishlist() {
                     `
                 )
             });
-            console.log(response)
         })
         .fail(err => {
             console.log(err)
@@ -118,7 +116,10 @@ function loginaje(event) {
         })
             .done(response => {
                 setToken(response.token)
-                console.log(response);
+                showLanding()
+                $("#authentication-action").empty()
+                $("#authentication-action").append(`<li><a style="cursor: pointer" onclick="logout()">Logout</a></li>`)
+                
             })
             .fail(err => {
                 console.log(err)
@@ -260,18 +261,15 @@ function onSignIn(googleUser) {
     })
         .done((result) => {
             setToken(result.token);
+            $("#authentication-action").empty()
+            $("#authentication-action").append(`<li><a style="cursor: pointer" onclick="logout()">Logout</a></li>`)
+            $("#register").hide()
+            $("#login").hide()
+
         })
         .fail((err) => {
             console.log(err);
         })
-}
-
-function signOut() {
-    const auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut()
-        .then(function () {
-            console.log('User signed out.');
-        });
 }
 
 function youtubeVideo(event, query) {
@@ -287,7 +285,6 @@ function youtubeVideo(event, query) {
     })
         .done(result => {
             result.forEach(element => {
-                console.log(element.videoId);
 
                 $("#destination-videos").append(
                     `
@@ -315,5 +312,13 @@ function logout() {
 
     $("#register").show()
     $("#login").show()
+    $("#authentication-action").empty()
+    $("#authentication-action").append(`<li><a href="#login">Login</a></li>`)
 
+}
+
+function showLanding() {
+    $("#register").hide()
+    $("#login").hide()
+    $("#authentication-action").append(`<li><a style="cursor: pointer" onclick="logout()">Logout</a></li>`)
 }
