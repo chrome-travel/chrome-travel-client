@@ -63,7 +63,7 @@ function getDestinationCards() {
                                 <h4>${el.name}</h4>
                                 <p>${el.city},  ${el.country}</p>
                                 <div class="portfolio-links">
-                                <a href="assets/img/portfolio/portfolio-1.jpg" onclick="setDestinationId(${el.id})" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" data-gall="portfolioGallery" class="venobox" title="Kuta"><i class="icofont-eye"></i></a>
+                                <a href="assets/img/portfolio/portfolio-1.jpg" onclick="setDestinationId(${el.id})" data-toggle="modal" data-target="#exampleModalCenter" data-gall="portfolioGallery" class="venobox"><i class="icofont-eye"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -124,7 +124,7 @@ $("document").ready(function () {
     // } else {
     //     showRegister();
     // }
-    // showDashboard()
+    showDashboard()
 
     
 
@@ -152,6 +152,8 @@ $("document").ready(function () {
     $("#btn-wishlist").on('click',function () {
         showWishlist()
     })
+
+    
 
     $("#login-form").on('submit',function (e) {
         e.preventDefault()
@@ -227,12 +229,14 @@ $("document").ready(function () {
             }
         })
             .done(response => {
+                $('#exampleModalCenter').modal('toggle')
                 console.log(response)
             })
             .fail(err => {
                 console.log(err)
             })
-    })
+        })
+
 })
 
 function onSignIn(googleUser) {
