@@ -1,4 +1,3 @@
-let isLogin = false;
 let destinationId;
 
 function setDestinationId(id){
@@ -22,18 +21,16 @@ const showLogin = () => {
 }
 
 const showRegister = () => {
-    $("#login").hide();
-    $("#register").show();
-    $("#cards").hide();
+    $("#register-form").show();
 }
 
-const showDashboard = () => {
-    // $("#login").hide();
-    // $("#register").hide();
-    $("#cards").empty();
-    getDestinationCards()
-    $("#cards").show();
-}
+// const showDashboard = () => {
+//     $("#login").hide();
+//     $("#register").hide();
+//     $("#cards").empty();
+//     getDestinationCards()
+//     $("#cards").show();
+// }
 
 const showWishlist = () => {
     $("#login").hide();
@@ -52,22 +49,24 @@ function getDestinationCards() {
         }
     })
         .done(response => {
-            console.log(response)
             response.forEach(el => {
                 $("#cards").append(
                     `
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-${el.id}.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>${el.name}</h4>
-                                <p>${el.city},  ${el.country}</p>
-                                <div class="portfolio-links">
-                                <a href="assets/img/portfolio/portfolio-1.jpg" onclick="setDestinationId(${el.id})" data-toggle="modal" data-target="#exampleModalCenter" data-gall="portfolioGallery" class="venobox"><i class="icofont-eye"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                    <section class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">${el.name}</h5>
+                      <p class="card-text">${el.city}, ${el.country}</p>
                     </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"></li>
+                    </ul>
+                    <div class="card-body">
+                    <button type="button" onclick="setDestinationId(${el.id})" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                    Detail
+                    </button>
+                    </div>
+                  </section>
                     `
                 )
             });
@@ -77,7 +76,7 @@ function getDestinationCards() {
             console.log(err)
         })
 }
-// 
+
 function getWishlist() {
     $.ajax({
         method: "GET",
@@ -94,7 +93,7 @@ function getWishlist() {
                     <img class="card-img-top" src="..." alt="Card image cap">
                     <div class="card-body">
                       <h5 class="card-title">${el.Destination.name}</h5>
-                      <p class="card-text">>${el.Destination.city},  ${el.Destination.country}</p>
+                      <p class="card-text">${el.Destination.city}, ${el.Destination.country}</p>
                     </div>
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item">${el.date}</li>
@@ -104,8 +103,6 @@ function getWishlist() {
                       <a href="#" class="card-link">Selain Detail</a>
                     </div>
                   </section>
-
-                  
                     `
                 )
             });
@@ -116,33 +113,23 @@ function getWishlist() {
         })
 }
 
-// getDestinationCards()
-$("document").ready(function () {
-    // if (getToken()) {
-    //     isLogin = true;
-    //     showLogin();
-    // } else {
-    //     showRegister();
-    // }
-    showDashboard()
-
+$(document).ready(function () {
+    console.log('masuk document ready');
     
-
-
+    let token = getToken()
+    if (token) {
+        $("#login").hide()
+        $("#register-form").hide()
+    } else {
+        $("#login").show()
+        $("#register-form").show()
+    }
+    showDashboard()
 
     $("#btn-login").on('click',function () {
         $("#email").val("")
         $("#password").val("")
         showLogin()
-    })
-
-    $("#btn-register").on('click',function () {
-        $("#register-name").val("")
-        $("#register-email").val("")
-        $("#register-password").val("")
-        $("#register-phone_number").val("")
-        $("#register-gender").val("")
-        showRegister()
     })
 
     $("#btn-dashboard").on('click',function () {
@@ -152,8 +139,6 @@ $("document").ready(function () {
     $("#btn-wishlist").on('click',function () {
         showWishlist()
     })
-
-    
 
     $("#login-form").on('submit',function (e) {
         e.preventDefault()
@@ -229,14 +214,12 @@ $("document").ready(function () {
             }
         })
             .done(response => {
-                $('#exampleModalCenter').modal('toggle')
                 console.log(response)
             })
             .fail(err => {
                 console.log(err)
             })
-        })
-
+    })
 })
 
 function onSignIn(googleUser) {
@@ -256,7 +239,6 @@ function onSignIn(googleUser) {
     })
         .done((result) => {
             setToken(result.token);
-            showRegister();
         })
         .fail((err) => {
             console.log(err);
@@ -300,3 +282,4 @@ function youtubeVideo(event, query) {
             console.log(err);
         })
 }
+
