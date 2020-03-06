@@ -52,21 +52,18 @@ function getDestinationCards() {
             response.forEach(el => {
                 $("#cards").append(
                     `
-                    <section class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">${el.name}</h5>
-                      <p class="card-text">${el.city}, ${el.country}</p>
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="assets/img/portfolio/portfolio-${el.id}.jpg" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>${el.name}</h4>
+                                <p>${el.city},  ${el.country}</p>
+                                <div class="portfolio-links">
+                                <a id="displayModal" onclick="setDestinationId(${el.id})" data-toggle="modal" data-target="#exampleModalCenter" data-gall="portfolioGallery" class="venobox"><i class="icofont-eye"></i></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item"></li>
-                    </ul>
-                    <div class="card-body">
-                    <button type="button" onclick="setDestinationId(${el.id})" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                    Detail
-                    </button>
-                    </div>
-                  </section>
                     `
                 )
             });
@@ -216,6 +213,7 @@ $(document).ready(function () {
             }
         })
             .done(response => {
+                $('#exampleModalCenter').modal('toggle')
                 console.log(response)
             })
             .fail(err => {
@@ -258,7 +256,6 @@ function signOut() {
 function youtubeVideo(event, query) {
     event.preventDefault()
     $("#destination-videos").empty()
-    console.log(query);
 
     $.ajax({
         method: "POST",
