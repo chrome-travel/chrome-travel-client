@@ -32,6 +32,53 @@ const showWishlist = () => {
     $("#cards").show();
 }
 
+function getDestinationById(idinput){
+    const token = getToken()
+    const id = idinput
+
+    $.ajax({
+        method: "GET",
+        url: `http://localhost:3000/destinations/${id}`,
+        headers:{
+            token
+        }
+    })
+        .done(response => {
+            const zomatos = response.zomato
+            const hotels = response.hotels
+            const youtube = response.youtube
+            zomatos.forEach(el => {
+                $("#list-zomatos").append(`
+                    <li>${el.name}, rating: ${el.rating}</li>
+                `)
+            })
+            hotels.forEach(el => {
+                $("#list-hotels").append(`
+                    <li>${el}</li>
+                `)
+            })
+            youtube.forEach(el => {
+                $("#list-youtube").append(
+                    `
+                    <li>
+                        <iframe width="360" height="202.5" src="https://www.youtube.com/embed/${el.videoId}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </li>
+                    `
+                )
+            })
+
+            console.log(response)
+        })
+        .fail(err => {
+            console.log(err)
+        })
+}
+
+function duaduanya(id){
+    setDestinationId(id)
+    getDestinationById(id)
+}
+
 function getDestinationCards() {
     $.ajax({
         method: "GET",
@@ -51,7 +98,7 @@ function getDestinationCards() {
                                 <h4>${el.name}</h4>
                                 <p>${el.city},  ${el.country}</p>
                                 <div class="portfolio-links">
-                                <button onclick="setDestinationId(${el.id})" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="icofont-eye"></i></button>
+                                <button onclick="duaduanya(${el.id})" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="icofont-eye"></i></button>
 
                                 </div>
                             </div>
