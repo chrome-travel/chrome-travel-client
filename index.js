@@ -176,6 +176,7 @@ function loginaje(event) {
                 showLanding()
                 $("#authentication-action").empty()
                 $("#authentication-action").append(`<li><a style="cursor: pointer" onclick="logout()">Logout</a></li>`)
+                $("#wishlist").show()
                 
             })
             .fail(err => {
@@ -194,10 +195,12 @@ $(document).ready(function () {
         $("#login").hide()
         $("#register").hide()
         $("#authentication-action").append(`<li><a style="cursor: pointer" onclick="logout()">Logout</a></li>`)
+        $("#wishlist").show()
     } else {
         $("#login").show()
         $("#register").show()
         $("#authentication-action").append(`<li><a href="#login">Login</a></li>`)
+        $("#wishlist").hide()
     }
 
     // getDestinationCards()
@@ -327,6 +330,7 @@ function onSignIn(googleUser) {
             $("#authentication-action").append(`<li><a style="cursor: pointer" onclick="logout()">Logout</a></li>`)
             $("#register").hide()
             $("#login").hide()
+            $("#wishlist").show()
 
         })
         .fail((err) => {
@@ -376,6 +380,7 @@ function logout() {
     $("#login").show()
     $("#authentication-action").empty()
     $("#authentication-action").append(`<li><a href="#login">Login</a></li>`)
+    $("#wishlist").hide()
 
 }
 
